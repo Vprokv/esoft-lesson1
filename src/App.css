@@ -1,5 +1,15 @@
+body{
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+}
+
 .App {
-  text-align: center;
+  display: grid;
+  grid-gap: 1em;
+  width: 100%;
+  padding: 20px;
+  margin: 20px;
 }
 
 .App-logo {
@@ -35,4 +45,93 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+button {
+  border: 0;
+
+}
+
+.background-color-BFA764{
+  background: #BFA764;
+}
+
+.button-color-white{
+  background: #FFFFFF;
+}
+.button-color-grey{
+  background: #C4C4C4;
+}
+
+.button-color-#F3F3F3{
+  background: #F3F3F3;
+}
+.write-color-black {
+  color: #000000;
+}
+.write-color-white{
+  color: #FFFFFF;
+}
+.write-color-gold {
+  color: #BFA764;
+}
+
+.background-color-BDBDBD {
+  background: #BDBDBD;
+}
+
+.j-c-center {
+  justify-content: center;
+}
+
+.align-i-center {
+  align-items: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+.button-184_34 {
+  width: 184px;
+  height: 34px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 140%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  border-radius: 4px;
+  align-content: center;
+}
+
+.icon-cross-Headline{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+ .container500х365{
+   width: 500px;
+   height: 365px;
+ }
+
+.container500х665{
+  width: 500px;
+  height: 565px;
+}
+
+.m-t-20{
+  margin-top: 20px;
 }

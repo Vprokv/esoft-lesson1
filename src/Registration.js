@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 function App() {
     return (
         <div className="flex-container j-c-center align-i-center">
-            <div className="container-authorization container500х365 j-c-center align-i-center">
+            <div className="container-authorization container500х665 j-c-center align-i-center">
                 <div className="container-white">
                     <p>
                         <svg className="icon-cross-Headline"
@@ -27,25 +27,34 @@ function App() {
                         </svg>
                     </p>
                     <div className="container-text-main-title">
-                        Авторизация
+                       Создать аккаунт
                     </div>
                     <div className="Headline-container-FieldName">
-                        <label for="username" className="container-text-title">Имя пользователя:</label>
-                        <input type="text" id="Username" name="username"
-                               className="container-input"/>
-                        <label htmlFor="username" className="container-text-title">Пароль:</label>
-                        <input type="text" id="pwd" name="pwd"
-                               className="container-input"/>
-                    </div>
-                    <div className="text-registration">
-                        У вас нет Аккаунта? Регистрация
-                    </div>
-                    <div>
 
+                        <label for="fname" className="container-text-title">Имя:</label>
+                        <input type="text" id="fname" name="fname" value="John"
+                               className="container-input"/>
+
+                        <label for="lname" className="container-text-title">Фамилия:</label>
+                        <input type="text" id="lname" name="lname" value="Johnes"
+                               className="container-input"/>
+
+                        <label for="uname" className="container-text-title">Имя пользователя:</label>
+                        <input type="text" id="uname" name="uname" value="@JohnJohnes"
+                               className="container-input"/>
+
+                        <label for="email" className="container-text-title">Электронная почта:</label>
+                        <input type="email" id="email" name="email" value="JohnJohnes@google.com"
+                               className="container-input"/>
+
+                        <label htmlFor="pwd" className="container-text-title">Пароль:</label>
+                        <input type="pwd" id="pwd" name="pwd"
+                               className="container-input"/>
                     </div>
-                    <div className="d-flex j-c-center">
+
+                    <div className="d-flex j-c-center m-t-20">
                         <button className="button-184_34 background-color-BFA764">
-                            Авторизация
+                           Регистрация
                         </button>
                     </div>
                 </div>
