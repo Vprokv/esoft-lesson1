@@ -55,8 +55,11 @@ button {
 .background-color-BFA764{
   background: #BFA764;
 }
+.background-color-red {
+  background: #f37676;
+}
 
-.button-color-white{
+.background-color-white{
   background: #FFFFFF;
 }
 .button-color-grey{
@@ -74,6 +77,10 @@ button {
 }
 .write-color-gold {
   color: #BFA764;
+}
+
+.write-color-red {
+  color: red;
 }
 
 .background-color-BDBDBD {
@@ -101,7 +108,7 @@ button {
 
 
 
-.button-184_34 {
+.button-large {
   width: 184px;
   height: 34px;
   font-style: normal;
@@ -122,12 +129,12 @@ button {
 }
 
 
- .container500х365{
+ .container-small{
    width: 500px;
    height: 365px;
  }
 
-.container500х665{
+.container-medium{
   width: 500px;
   height: 565px;
 }
@@ -135,3 +142,8 @@ button {
 .m-t-20{
   margin-top: 20px;
 }
+
+.f-s-12{
+  font-size: 12px;
+}
+

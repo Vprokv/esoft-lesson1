@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 function App() {
     return (
         <div className="flex-container j-c-center align-i-center">
-            <div className="container-authorization container500х665 j-c-center align-i-center">
+            <div className="container-authorization container-medium j-c-center align-i-center">
                 <div className="container-white">
                     <p>
                         <svg className="icon-cross-Headline"
@@ -53,7 +53,7 @@ function App() {
                     </div>
 
                     <div className="d-flex j-c-center m-t-20">
-                        <button className="button-184_34 background-color-BFA764">
+                        <button className="button-large background-color-BFA764">
                            Регистрация
                         </button>
                     </div>

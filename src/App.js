@@ -1,14 +1,30 @@
 import logo from './logo.svg';
 import './App.css'
-import React from 'react';
 import './Styles.scss';
 import PropTypes from 'prop-types';
 
+import useInput from './validator'
+
+const validUserName = {isEmpty: true, minLength: 2}
+const validPassword = {isEmpty: true, minLength: 5, maxLength: 10}
+
 
 function App() {
+    // const email = useInput("", b)
+    const userName = useInput("", validUserName)
+    const password = useInput("", validPassword)
+
+    const handleSubmit = () => {
+        if (userName.errors.length > 0 || password.errors.length > 0) {
+
+        } else {
+            console.log(userName.value, password.value)
+        }
+    }
+
     return (
         <div className="flex-container j-c-center align-i-center">
-            <div className="container-authorization container500х365 j-c-center align-i-center">
+            <div className="container-authorization container-small j-c-center align-i-center">
                 <div className="container-white">
                     <p>
                         <svg className="icon-cross-Headline"
@@ -30,21 +46,61 @@ function App() {
                         Авторизация
                     </div>
                     <div className="Headline-container-FieldName">
-                        <label for="username" className="container-text-title">Имя пользователя:</label>
-                        <input type="text" id="Username" name="username"
-                               className="container-input"/>
-                        <label htmlFor="username" className="container-text-title">Пароль:</label>
-                        <input type="text" id="pwd" name="pwd"
-                               className="container-input"/>
+                        <label
+                            htmlFor="userName"
+                            className="container-text-title">
+                            Имя пользователя
+                        </label>
+
+                        {(userName.errors.length > 0 && userName.errors.length > 0) &&
+                        <div className="write-color-red f-s-12">
+                            {userName.errors[userName.errors.length - 1]}
+                        </div>
+                        }
+                        <input
+                            onChange={e => userName.onChange(e)}
+                            onBlur={e => userName.onBlur(e)}
+                            value={userName.value}
+
+                            type="text"
+                            id="Username"
+                            name="username"
+                            className={`container-input ${userName.errors.length > 0 ? "background-color-red" : "background-color-white"}`}/>
+
+
+                        <label
+                            htmlFor="password"
+                            className="container-text-title">
+                            Пароль
+                        </label>
+
+                        {(password.errors.length > 0 && password.errors.length > 0) &&
+                        <div className="write-color-red f-s-12">
+                            {password.errors[password.errors.length - 1]}
+                        </div>
+                        }
+
+                        <input
+                            onChange={e => password.onChange(e)} // деструктуризация {password}=(onChange, onBlur, value)
+                            onBlur={e => password.onBlur(e)}
+                            value={password.value}
+                            type="text"
+                            id="pwd"
+                            name="pwd"
+                            className={`container-input ${password.errors.length > 0 ?
+                                "background-color-red" : "background-color-white"}`}/>
                     </div>
-                    <div className="text-registration">
+                    <div className="container-text">
                         У вас нет Аккаунта? Регистрация
                     </div>
                     <div>
 
                     </div>
                     <div className="d-flex j-c-center">
-                        <button className="button-184_34 background-color-BFA764">
+                        <button
+                            onClick={handleSubmit}
+                            disabled={!userName.inputValid || !password.inputValid}
+                            className="button-large background-color-BFA764">
                             Авторизация
                         </button>
                     </div>
