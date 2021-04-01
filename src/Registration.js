@@ -1,14 +1,45 @@
 import logo from './logo.svg';
 import './App.css'
-import React from 'react';
+// import React from 'react';
 import './Styles.scss';
 import PropTypes from 'prop-types';
 
+import useInput from './validator'
+
+const validFirstName = {isEmpty: true, minLength: 2, maxLength: 20}
+const validLastName = {isEmpty: true, minLength: 2, maxLength: 30}
+const validUserName = {isEmpty: true, minLength: 2, maxLength: 20}
+const validPassword = {isEmpty: true, minLength: 5, maxLength: 10}
+const validEmail = {isEmpty: true, isEmail: true }
+
 
 function App() {
+    const userFirstName = useInput("", validFirstName)
+    const userLastName = useInput("", validLastName)
+    const userName = useInput("", validUserName)
+    const password = useInput("", validPassword)
+    const userEmail = useInput("", validEmail)
+
+    const handleSubmit = () => {
+        if (
+            userFirstName.errors.length > 0 ||
+            userLastName.errors.length > 0 ||
+            userName.errors.length > 0 ||
+            userEmail.errors.length > 0 ||
+            password.errors.length > 0) {
+
+        } else {
+            console.log(
+                userFirstName.value,
+                userLastName.value,
+                userName.value,
+                userEmail.value,
+                password.value)}
+    }
+
     return (
         <div className="flex-container j-c-center align-i-center">
-            <div className="container-authorization container-medium j-c-center align-i-center">
+            <div className="container-authorization medium j-c-center align-i-center">
                 <div className="container-white">
                     <p>
                         <svg className="icon-cross-Headline"
@@ -26,35 +57,137 @@ function App() {
                             </defs>
                         </svg>
                     </p>
-                    <div className="container-text-main-title">
-                       Создать аккаунт
-                    </div>
-                    <div className="Headline-container-FieldName">
+                    <h1 className="container-text-main-title">
+                        Регистрация пользователя
+                    </h1>
+                    <legend className="Headline-container-FieldName">
+                        <label
+                            htmlFor="userFirstName"
+                            className="container-text-title">
+                            Имя
+                        </label>
 
-                        <label for="fname" className="container-text-title">Имя:</label>
-                        <input type="text" id="fname" name="fname" value="John"
-                               className="container-input"/>
+                        {(userFirstName.isDirty && userFirstName.errors.length > 0) &&
+                        <div className="write-color-red f-s-12">
+                            {userFirstName.errors[userFirstName.errors.length - 1]}
+                        </div>
+                        }
 
-                        <label for="lname" className="container-text-title">Фамилия:</label>
-                        <input type="text" id="lname" name="lname" value="Johnes"
-                               className="container-input"/>
+                        <input
+                            onChange={e => userFirstName.onChange(e)}
+                            onBlur={e => userFirstName.onBlur(e)}
+                            value={userFirstName.value}
 
-                        <label for="uname" className="container-text-title">Имя пользователя:</label>
-                        <input type="text" id="uname" name="uname" value="@JohnJohnes"
-                               className="container-input"/>
+                            type="text"
+                            id="userFirstName"
+                            name="userFirstName"
+                            className={`container-input 
+                            ${userFirstName.isDirty && userFirstName.errors.length > 0 ?
+                                "background-color-red" : "background-color-white"}`}/>
 
-                        <label for="email" className="container-text-title">Электронная почта:</label>
-                        <input type="email" id="email" name="email" value="JohnJohnes@google.com"
-                               className="container-input"/>
+                        <label
+                            htmlFor="lname"
+                            className="container-text-title">
+                            Фамилия
+                        </label>
 
-                        <label htmlFor="pwd" className="container-text-title">Пароль:</label>
-                        <input type="pwd" id="pwd" name="pwd"
-                               className="container-input"/>
-                    </div>
+                        {(userLastName.isDirty && userLastName.errors.length > 0) &&
+                        <div className="write-color-red f-s-12">
+                            {userLastName.errors[userLastName.errors.length - 1]}
+                        </div>
+                        }
+
+                        <input
+                            onChange={e => userLastName.onChange(e)}
+                            onBlur={e => userLastName.onBlur(e)}
+                            value={userLastName.value}
+
+                            type="text"
+                            id="lname"
+                            name="lname"
+                            className={`container-input 
+                            ${userLastName.isDirty && userLastName.errors.length > 0 ?
+                                "background-color-red" : "background-color-white"}`}/>
+
+                        <label
+                            htmlFor="uname"
+                            className="container-text-title">
+                            Имя пользователя
+                        </label>
+                        {(userName.isDirty && userName.errors.length > 0) &&
+                        <div className="write-color-red f-s-12">
+                            {userName.errors[userName.errors.length - 1]}
+                        </div>
+                        }
+                        <input
+                            onChange={e => userName.onChange(e)}
+                            onBlur={e => userName.onBlur(e)}
+                            value={userName.value}
+
+                            type="text"
+                            id="uname"
+                            name="uname"
+                            className={`container-input 
+                            ${userName.isDirty && userName.errors.length > 0 ?
+                                "background-color-red" : "background-color-white"}`}/>
+
+                        <label
+                            htmlFor="email"
+                            className="container-text-title">
+                            Электронная почта
+                        </label>
+                        {(userEmail.isDirty && userEmail.errors.length > 0) &&
+                        <div className="write-color-red f-s-12">
+                            {userEmail.errors[userEmail.errors.length - 1]}
+                        </div>
+                        }
+                        <input
+                            onChange={e => userEmail.onChange(e)}
+                            onBlur={e => userEmail.onBlur(e)}
+                            value={userEmail.value}
+
+                            type="email"
+                            id="email"
+                            name="email"
+                            // value="JohnJohnes@google.com"
+                            className={`container-input 
+                            ${userEmail.isDirty && userEmail.errors.length > 0 ?
+                                "background-color-red" : "background-color-white"}`}/>
+
+                        <label
+                            htmlFor="pwd"
+                            className="container-text-title">
+                            Пароль
+                        </label>
+                        {(password.isDirty && password.errors.length > 0) &&
+                        <div className="write-color-red f-s-12">
+                            {password.errors[password.errors.length - 1]}
+                        </div>
+                        }
+                        <input
+                            onChange={e => password.onChange(e)}
+                            onBlur={e => password.onBlur(e)}
+                            value={password.value}
+
+                            type="pwd"
+                            id="pwd"
+                            name="pwd"
+                            className={`container-input 
+                            ${password.isDirty && password.errors.length > 0 ?
+                                "background-color-red" : "background-color-white"}`}/>
+                    </legend>
 
                     <div className="d-flex j-c-center m-t-20">
-                        <button className="button-large background-color-BFA764">
-                           Регистрация
+                        <button
+                            onClick={handleSubmit}
+                            disabled={
+                                !userFirstName.inputValid ||
+                                !userLastName.inputValid ||
+                                !userName.inputValid ||
+                                !userEmail.inputValid ||
+                                !password.inputValid}
+                            className="button-large background-color-BFA764">
+                            Создать аккаунт
                         </button>
                     </div>
                 </div>

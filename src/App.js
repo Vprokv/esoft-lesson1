@@ -5,26 +5,28 @@ import PropTypes from 'prop-types';
 
 import useInput from './validator'
 
-const validUserName = {isEmpty: true, minLength: 2}
+const validUserName = {isEmpty: true, minLength: 2, maxLength: 20}
 const validPassword = {isEmpty: true, minLength: 5, maxLength: 10}
 
 
 function App() {
-    // const email = useInput("", b)
     const userName = useInput("", validUserName)
     const password = useInput("", validPassword)
 
     const handleSubmit = () => {
-        if (userName.errors.length > 0 || password.errors.length > 0) {
+        if (
+            userName.errors.length > 0 ||
+            password.errors.length > 0) {
 
         } else {
-            console.log(userName.value, password.value)
-        }
+            console.log(
+                userName.value,
+                password.value)}
     }
 
     return (
         <div className="flex-container j-c-center align-i-center">
-            <div className="container-authorization container-small j-c-center align-i-center">
+            <div className="container-authorization small j-c-center align-i-center">
                 <div className="container-white">
                     <p>
                         <svg className="icon-cross-Headline"
@@ -42,17 +44,17 @@ function App() {
                             </defs>
                         </svg>
                     </p>
-                    <div className="container-text-main-title">
-                        Авторизация
-                    </div>
-                    <div className="Headline-container-FieldName">
+                    <h1 className="container-text-main-title">
+                        Авторизация пользователя
+                    </h1>
+                    <legend className="Headline-container-FieldName">
                         <label
                             htmlFor="userName"
                             className="container-text-title">
                             Имя пользователя
                         </label>
 
-                        {(userName.errors.length > 0 && userName.errors.length > 0) &&
+                        {(userName.isDirty && userName.errors.length > 0) &&
                         <div className="write-color-red f-s-12">
                             {userName.errors[userName.errors.length - 1]}
                         </div>
@@ -65,7 +67,9 @@ function App() {
                             type="text"
                             id="Username"
                             name="username"
-                            className={`container-input ${userName.errors.length > 0 ? "background-color-red" : "background-color-white"}`}/>
+                            className={`container-input 
+                            ${userName.isDirty && userName.errors.length > 0 ? 
+                                "background-color-red" : "background-color-white"}`}/>
 
 
                         <label
@@ -74,7 +78,7 @@ function App() {
                             Пароль
                         </label>
 
-                        {(password.errors.length > 0 && password.errors.length > 0) &&
+                        {(password.isDirty && password.errors.length > 0) &&
                         <div className="write-color-red f-s-12">
                             {password.errors[password.errors.length - 1]}
                         </div>
@@ -87,9 +91,10 @@ function App() {
                             type="text"
                             id="pwd"
                             name="pwd"
-                            className={`container-input ${password.errors.length > 0 ?
+                            className={`container-input 
+                            ${password.isDirty && password.errors.length>0 ?
                                 "background-color-red" : "background-color-white"}`}/>
-                    </div>
+                    </legend>
                     <div className="container-text">
                         У вас нет Аккаунта? Регистрация
                     </div>
@@ -101,7 +106,7 @@ function App() {
                             onClick={handleSubmit}
                             disabled={!userName.inputValid || !password.inputValid}
                             className="button-large background-color-BFA764">
-                            Авторизация
+                            Войти в аккаунт
                         </button>
                     </div>
                 </div>

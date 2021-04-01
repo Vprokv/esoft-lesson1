@@ -6,6 +6,17 @@
   align-items: center;
   display: flex;
 
+  &.small{
+    width: 500px;
+    height: 385px;
+  }
+
+  &.medium{
+    width: 500px;
+    height: 645px;
+  }
+
+
   .container-white {
     width: 95%;
     height: 95%;
