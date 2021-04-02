@@ -60,7 +60,7 @@ function App() {
                     <h1 className="container-text-main-title">
                         Регистрация пользователя
                     </h1>
-                    <legend className="Headline-container-FieldName">
+                    <form className="Headline-container-FieldName">
                         <label
                             htmlFor="userFirstName"
                             className="container-text-title">
@@ -175,7 +175,7 @@ function App() {
                             className={`container-input 
                             ${password.isDirty && password.errors.length > 0 ?
                                 "background-color-red" : "background-color-white"}`}/>
-                    </legend>
+                    </form>
 
                     <div className="d-flex j-c-center m-t-20">
                         <button

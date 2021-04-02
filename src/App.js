@@ -47,7 +47,7 @@ function App() {
                     <h1 className="container-text-main-title">
                         Авторизация пользователя
                     </h1>
-                    <legend className="Headline-container-FieldName">
+                    <form className="Headline-container-FieldName">
                         <label
                             htmlFor="userName"
                             className="container-text-title">
@@ -94,7 +94,7 @@ function App() {
                             className={`container-input 
                             ${password.isDirty && password.errors.length>0 ?
                                 "background-color-red" : "background-color-white"}`}/>
-                    </legend>
+                    </form>
                     <div className="container-text">
                         У вас нет Аккаунта? Регистрация
                     </div>
